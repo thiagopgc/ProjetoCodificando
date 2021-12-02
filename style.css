@@ -17,16 +17,32 @@ body{
 }
 
 form{
-
 width: 50%;
 height: 50%;
 background: white;
 border-radius: 10px;
 border: solid yellow 3px;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 5px;
+background: linear-gradient(#ffc017, #00c7ff);
 }
 
 select{
     width: 90%;
-    margin:5px 15px;
 }
+
+div{
+margin-top: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+}
+
+div legend{
+    font-weight: bold;
+}
+
 
