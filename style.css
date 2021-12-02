@@ -47,6 +47,10 @@ div legend{
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }
+form label{
+    display: flex;
+    width: 20%
+}
 
 div p{
     font-weight: bold;
