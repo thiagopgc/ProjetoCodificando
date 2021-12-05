@@ -10,10 +10,11 @@
   </head>
   <body>
     <form>
-      <select class="selacao">
-        <option>Base64</option>
-        <option>Cifra de Cesar</option>
+      <select id="selecao">
+        <option class="base">Base64</option>
+        <option class="cesar">Cifra de Cesar</option>
       </select>
+      <input type="number" id="passo" min="1" max="9" />
       <div>
         <legend>Criptografar ou Descriptografar?</legend>
 
