@@ -11,27 +11,44 @@
   <body>
     <form>
       <select id="selecao">
-        <option class="base">Base64</option>
-        <option class="cesar">Cifra de Cesar</option>
+        <option value="base">Base64</option>
+        <option value="cesar">Cifra de Cesar</option>
       </select>
-      <input type="number" id="passo" min="1" max="9" />
       <div>
         <legend>Criptografar ou Descriptografar?</legend>
 
         <label for="radio-criptografar"
-          ><input type="radio" name="codigo" />Criptografar</label
+          ><input type="radio" name="codigo" class="radio" />Criptografar</label
         >
         <label for="radio-descriptografar"
-          ><input type="radio" name="codigo" />Descriptografar</label
+          ><input
+            type="radio"
+            name="codigo"
+            class="radio"
+          />Descriptografar</label
         >
+        <label for="number-passo" id="passo"
+          >Passo:<input type="number" min="1" max="9"
+        /></label>
 
         <p>
           Escreva aqui uma mensagem que queira criptografar ou descriptografar:
         </p>
 
-        <textarea name="mensagem" cols="30" rows="3"></textarea>
+        <textarea
+          name="mensagem"
+          cols="30"
+          rows="3"
+          class="textoInicial"
+        ></textarea>
         <h3>Retorno:</h3>
-        <textarea name="mensagem" cols="30" rows="3"></textarea>
+        <textarea
+          name="mensagem"
+          cols="30"
+          rows="3"
+          class="textoRetorno"
+        ></textarea>
+        <button class="botao">Codificar</button>
       </div>
     </form>
     <script src="./cesar.js"></script>
