@@ -3,6 +3,7 @@ var textoInicial = document.querySelector(".textoInicial");
 var textoRetorno = document.querySelector(".textoRetorno");
 var radio = document.querySelectorAll(".radio");
 var botao = document.querySelector(".botao");
+var selecionar = document.querySelector("#selecao");
 
 escolha = document.addEventListener("click", function () {
   var selecao = document.querySelector("#selecao").value; //value puxa o texto do seletor (#selecao).
@@ -11,6 +12,9 @@ escolha = document.addEventListener("click", function () {
   }
 });
 
+botao.addEventListener("click", function (event) {
+  event.preventDefault();
+});
 // var alfabetoMinusculo = "abcdefghijklmnopqrstuvwxyz";
 // var alfabetoMaiusculo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // var indice = 9;
