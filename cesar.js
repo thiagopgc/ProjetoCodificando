@@ -1,9 +1,8 @@
 var passo = document.querySelector("#passo");
 var textoInicial = document.querySelector(".textoInicial");
 var textoRetorno = document.querySelector(".textoRetorno");
-var radio = document.querySelectorAll(".radio");
+var radio = document.querySelectorAll(".radio"); // quando usamos o querySelectorAll em class iguais ele vira uma array.
 var botao = document.querySelector(".botao");
-var selecionar = document.querySelector("#selecao");
 
 escolha = document.addEventListener("click", function () {
   var selecao = document.querySelector("#selecao").value; //value puxa o texto do seletor (#selecao).
@@ -14,25 +13,58 @@ escolha = document.addEventListener("click", function () {
 
 botao.addEventListener("click", function (event) {
   event.preventDefault();
-});
-// var alfabetoMinusculo = "abcdefghijklmnopqrstuvwxyz";
-// var alfabetoMaiusculo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-// var indice = 9;
-
-// var letraMinuscula = alfabetoMinusculo[indice];
-// var letraMaiuscula = alfabetoMaiusculo[indice];
-
-var textoInicial = +document.querySelector(".textoInicial").innerHTML;
-function voltar() {
-  if (textoInicial > 1) {
-    textoInicial--;
-    document.querySelector(".textoInicial").innerHTML = textoInicial;
+  var selecao = document.querySelector("#selecao").value;
+  if (selecao == "cesar" && radio[0].checked) {
+    var texto = textoInicial.value.split("");
+    var numeroPasso = parseInt(passo.value);
+    textoRetorno.value = criptografar(texto, numeroPasso);
+  } else if (selecao == "cesar" && radio[1].checked) {
+    var texto = textoInicial.value.split("");
+    var numeroPasso = parseInt(passo.value);
+    textoRetorno.value = descriptografar(texto, numeroPasso);
+  } else if (selecao == "base" && radio[0].checked) {
+    var texto = textoInicial.value;
+    textoRetorno.value = btoa(texto);
+  } else {
+    var texto = textoInicial.value;
+    textoRetorno.value = atob(texto);
   }
+});
+
+function criptografar(mensagem, passo) {
+  return mensagem
+    .map((alfabeto) => {
+      var mensagemDeEntrada = alfabeto.charCodeAT();
+      if (mensagemDeEntrada >= 65 && mensagemDeEntrada <= 90) {
+        return String.fromCharCode(
+          ((mensagemDeEntrada - 65 + passo) % 26) + 65
+        );
+      } else if (mensagemDeEntrada >= 97 && mensagemDeEntrada <= 122) {
+        return String.fromCharCode(
+          ((mensagemDeEntrada - 97 + passo) % 26) + 97
+        );
+      } else {
+        return alfabeto;
+      }
+    })
+    .join("");
 }
 
-function avancar() {
-  if (textoInicial < 25) {
-    textoInicial++;
-    document.querySelector(".textoInicial").innerHTML = textoInicial;
-  }
+function descriptografar(mensagem, passo) {
+  return mensagem
+    .map((alfabeto) => {
+      var mensagemDeEntrada = alfabeto.charCodeAT();
+      if (mensagemDeEntrada >= 65 && mensagemDeEntrada <= 90) {
+        return String.fromCharCode(
+          ((mensagemDeEntrada - 65 - passo) % 26) + 65
+        );
+      } else if (mensagemDeEntrada >= 97 && mensagemDeEntrada <= 122) {
+        return String.fromCharCode(
+          ((mensagemDeEntrada - 97 - passo) % 26) + 97
+        );
+      } else {
+        return alfabeto;
+      }
+    })
+    .join("");
 }
