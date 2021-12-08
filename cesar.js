@@ -1,4 +1,5 @@
 var passo = document.querySelector("#passo");
+var chave = document.querySelector(".passo");
 var textoInicial = document.querySelector(".textoInicial");
 var textoRetorno = document.querySelector(".textoRetorno");
 var radio = document.querySelectorAll(".radio"); // quando usamos o querySelectorAll em class iguais ele vira uma array.
@@ -7,7 +8,7 @@ var botao = document.querySelector(".botao");
 escolha = document.addEventListener("click", function () {
   var selecao = document.querySelector("#selecao").value; //value puxa o texto do seletor (#selecao).
   if (selecao == "cesar") {
-    passo.style.display = "flex";
+    chave.style.display = "flex";
   }
 });
 
@@ -33,8 +34,8 @@ botao.addEventListener("click", function (event) {
 
 function criptografar(mensagem, passo) {
   return mensagem
-    .map((alfabeto) => {
-      var mensagemDeEntrada = alfabeto.charCodeAT();
+    .map((str) => {
+      var mensagemDeEntrada = str.charCodeAt();
       if (mensagemDeEntrada >= 65 && mensagemDeEntrada <= 90) {
         return String.fromCharCode(
           ((mensagemDeEntrada - 65 + passo) % 26) + 65
@@ -44,7 +45,7 @@ function criptografar(mensagem, passo) {
           ((mensagemDeEntrada - 97 + passo) % 26) + 97
         );
       } else {
-        return alfabeto;
+        return str;
       }
     })
     .join("");
@@ -52,18 +53,18 @@ function criptografar(mensagem, passo) {
 
 function descriptografar(mensagem, passo) {
   return mensagem
-    .map((alfabeto) => {
-      var mensagemDeEntrada = alfabeto.charCodeAT();
+    .map((str) => {
+      var mensagemDeEntrada = str.charCodeAt();
       if (mensagemDeEntrada >= 65 && mensagemDeEntrada <= 90) {
         return String.fromCharCode(
-          ((mensagemDeEntrada - 65 - passo) % 26) + 65
+          ((mensagemDeEntrada - 90 - passo) % 26) + 90
         );
       } else if (mensagemDeEntrada >= 97 && mensagemDeEntrada <= 122) {
         return String.fromCharCode(
-          ((mensagemDeEntrada - 97 - passo) % 26) + 97
+          ((mensagemDeEntrada - 122 - passo) % 26) + 122
         );
       } else {
-        return alfabeto;
+        return str;
       }
     })
     .join("");

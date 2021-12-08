@@ -57,15 +57,17 @@ div p {
   text-align: center;
 }
 
-#passo {
+div .passo {
   display: none;
   margin-top: 10px;
   font-weight: bold;
+  width: 50%;
+  height: 20px;
 }
 
 button {
   border-radius: 5px;
-  width: 15%;
+  width: auto;
   background: #00c7ff;
   font-size: 15px;
   font-weight: bold;
